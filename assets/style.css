@@ -37,6 +37,37 @@ body {
     margin-right: 0;
 }
 
+
+.search-box {
+  flex: 1; 
+  margin: 0 80px; 
+  position: relative; 
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-box button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-box button img {
+  width: 20px; 
+  height: auto; 
+}
+
+
 /* ====== END NAVBAR ====== */
 
 
@@ -150,11 +181,53 @@ body {
   }
   
 
+/* ====== FOOTER ====== */
+
+/* Estilos do footer */
+
+.footer {
+  background-color: #F0EDCF;
+  color: #000000;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.privacy-policy a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.social-media .social-icon {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.social-icon img{
+  height: 25px;
+}
+
+.social-media .social-icon:last-child {
+  margin-right: 0;
+}
+
+/* ====== END OF FOOTER====== */
+
 /* ====== MEDIA ====== */
 
 @media (max-width: 768px) {
     .grid-container {
         grid-template-columns: repeat(2, 1fr); /* 2 coluna */
+    }
+    .search-box {
+      margin: 0 60px; 
     }
 }
 
@@ -162,8 +235,10 @@ body {
     .grid-container {
         grid-template-columns: repeat(1, 1fr); /* 1 coluna */
     }
+
+    .search-box {
+      margin: 0 40px; 
+      
+    }
 }
-
-
-
 
