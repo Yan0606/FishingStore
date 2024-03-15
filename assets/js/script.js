@@ -1,0 +1,24 @@
+
+// ====SEARCH BAR ====
+var input = document.getElementById("searchInput");
+input.addEventListener("input", filterCards);
+
+function filterCards() {
+    var filter, cards, card, title, i, txtValue;
+    filter = input.value.toUpperCase();
+    cards = document.getElementsByClassName("card");
+
+    for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        title = card.querySelector(".card-title");
+        txtValue = title.textContent || title.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    }
+}
+
+// FIM DA SEARCH BAR
