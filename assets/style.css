@@ -83,6 +83,21 @@ width: 20px;
   flex-direction: column;
   text-align: center;
   padding-bottom: 1rem;
+  background-color: #F0EDCF;
+  margin: 0; clip-path: circle(1500px at 90% - 15%);
+  pointer-events: all;
+}
+
+.mobile-menu li:nth-child(1) a{
+  transition: 0.5s 0.2s;
+}
+
+.mobile-menu li:nth-child(2) a{
+  transition: 0.5s 0.4s;
+}
+
+.mobile-menu li:nth-child(3) a{
+  transition: 0.5s 0.6s;
 }
 
 .mobile-menu .nav-item{
