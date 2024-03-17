@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FishingStore</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-<nav>
-    <div class="navbar">
+    <nav class="navbar">
         <div class="logo"><img src="assets/img/logo1.png"></div>
 
         <div class="search-box">
@@ -17,12 +18,25 @@
         </div>
 
         <div class="links">
-            <a href="#" class="link">Link</a>
-            <a href="#" class="link">Link</a>
-            <a href="#" class="link">Link</a>
+            <ul>
+                <li class="nav-item"><a href="#" class="link">Link</a></li>
+                <li class="nav-item"><a href="#" class="link">Link</a></li>
+                <li class="nav-item"><a href="#" class="link">Link</a></li>
+            </ul>
         </div>
+        <div class="mobile-menu-icon">
+            <button onclick="menuShow()"><img class="icon" src="assets/img/icons/menu-aberto.png"></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <ul>
+            <li class="nav-item"><a href="#" class="link">Link</a></li>
+            <li class="nav-item"><a href="#" class="link">Link</a></li>
+            <li class="nav-item"><a href="#" class="link">Link</a></li>
+        </ul>
     </div>
-</nav>
+  
 
     <div class="grid-container">
 
@@ -34,7 +48,7 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
         </div>
@@ -46,10 +60,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/carretilha3.png"></div>
             <div class="card-title">Carretilha</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -57,10 +72,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/molinete.png"></div>
             <div class="card-title">Molinete</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -68,10 +84,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/molinete2.png"></div>
             <div class="card-title">Molinete</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -79,10 +96,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/mulinete3.png"></div>
             <div class="card-title">Molinete</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -90,10 +108,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/isca1.png"></div>
             <div class="card-title">Isca Frog</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -101,10 +120,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/isca2.png"></div>
             <div class="card-title">Isca Camarão</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -112,10 +132,11 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
-        </div> <div class="card">
+        </div>
+        <div class="card">
             <div class="card-img"><img src="assets/img/isca3.png"></div>
             <div class="card-title">Isca</div>
             <div class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
@@ -123,7 +144,7 @@
             <div class="card-footer">
                 <div class="card-price"><span>$</span> 123.45</div>
                 <button class="card-btn">
-                  <img src="assets/img/icons/carrinho-carrinho.png">
+                    <img src="assets/img/icons/carrinho-carrinho.png">
                 </button>
             </div>
         </div>
@@ -144,6 +165,7 @@
     </footer>
 
 </body>
+
 </html>
 
- <script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>

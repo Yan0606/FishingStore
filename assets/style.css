@@ -29,6 +29,15 @@ body {
   text-decoration: none;
   color: #000000;
 }
+
+.links ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+.nav-item{
+  margin:0 15px
+}
 .link:hover{
   color: #0B60B0;
 }
@@ -37,7 +46,64 @@ body {
   margin-right: 0;
 }
 
+/* MENU HAMBURGUER */
+.mobile-menu-icon{
+  display: none;
+}
+.mobile-menu-icon img{
+width: 20px;
+}
 
+.mobile-menu{
+  display: none;
+}
+
+@media screen and (max-width:730px){
+  .nav-item{
+    display: none;
+  }
+
+  .nav-bar{
+    padding: 1.5rem 4rem;
+  }
+
+  .mobile-menu-icon{
+    display: block;
+  }
+
+  .mobile-menu-icon button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.mobile-menu ul{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.mobile-menu .nav-item{
+  display: block;
+  padding-top: 1.2rem;
+}
+
+.mobile-menu .login-button{
+  display: block;
+  padding: 1rem 2rem;
+}
+
+.mobile-menu .login-button button{
+  width: 100%;
+}
+
+.open{
+  display: block;
+}
+
+/* FIM MENU HAMBURGUER */
 .search-box {
 flex: 1; 
 margin: 0 80px; 
