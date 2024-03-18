@@ -35,6 +35,9 @@ body {
   justify-content: center;
   list-style: none;
 }
+.links img{
+  width: 30px;
+}
 .nav-item{
   margin:0 15px
 }
