@@ -1,3 +1,51 @@
+// ====REQUISIÇÃO DA API ====
+
+let url_initial = "http://localhost:8080/";
+const products_div = document.getElementById("products");
+
+$.ajax({
+    method: "GET",
+    url: url_initial + "products/getall",
+    dataType: "JSON",
+}).done(function (response) {
+    if(response.length > 0){
+        let imprimir = "";
+        $.each(response, function(i){
+            imprimir += ` 
+            <div class="card">
+                <div class="card-img">
+                    <img src="assets/img/carretilha.png">
+                </div>
+                <div class="card-title">
+                    ${response[i].name}
+                </div>
+                <div class="card-subtitle">
+                    ${response[i].description}
+                </div>
+            <hr class="card-divider">
+            <div class="card-footer">
+                <div class="card-price"><span>R$</span> ${response[i].value}</div>
+                    <button class="card-btn">
+                        <img src="assets/img/icons/carrinho-carrinho.png">
+                    </button>
+                </div>
+            </div>`;
+           
+        });
+        products_div.innerHTML = imprimir;
+        // localStorage.setItem("token", "uuid-ccrgkj31423rm-34wt,bi3bjk")
+    }
+    else{
+        products_div.innerHTML = "não há produtos!";
+    }
+
+  
+}).fail(function (erro) {
+    console.log(erro)
+})
+
+// ====FIM DA REQUISIÇÃO ====
+
 
 // ====SEARCH BAR ====
 var input = document.getElementById("searchInput");
@@ -20,7 +68,6 @@ function filterCards() {
         }
     }
 }
-
 // FIM DA SEARCH BAR
 
 function menuShow(){
