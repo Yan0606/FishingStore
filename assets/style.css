@@ -60,6 +60,9 @@ width: 20px;
 .mobile-menu{
   display: none;
 }
+.mobile-menu ul li img{
+  width: 30px;
+}
 
 @media screen and (max-width:730px){
   .nav-item{
