@@ -69,7 +69,8 @@ function filterCards() {
     }
 }
 // FIM DA SEARCH BAR
-
+   
+//MOBILE-MENU
 function menuShow(){
     let menuMobile = document.querySelector('.mobile-menu');
 
@@ -81,5 +82,23 @@ if (menuMobile.classList.contains('open')){
     menuMobile.classList.add('open');
     document.querySelector('.icon').src= "assets/img/icons/x.png";
 }
-
 }
+
+//CARRINHO DE COMPRA
+
+let carIcon = document.querySelector('#car-icon'); 
+let car = document.querySelector('.car');
+let closeCar = document.querySelector('#close-car');
+
+carIcon.onclick = () => {
+    car.classList.add("active")
+};
+
+closeCar.onclick = () => {
+    car.classList.remove("active")
+};
+
+//FIM CARRINHO DE COMPRA
+
+
+//FIM DO MOBILE MENU
