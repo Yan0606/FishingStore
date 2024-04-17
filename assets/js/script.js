@@ -2,6 +2,50 @@
 
 let url_initial = "http://localhost:8080/";
 const products_div = document.getElementById("products");
+const form = document.getElementById("form");
+
+// $.ajax({
+//     method:"POST",
+//     url: url_initial + "users/insert",
+//     dataType: "JSON",
+//     data:{
+//         name: nome,
+//         email: email,
+//         password: password
+//     }
+// }).done(function (response) {
+//     if(response.length > 0){
+//         let imprimir = "";
+//         $.each(response, function(i){
+//             imprimir += ` 
+//             <p class="title">Registrar </p>
+//         <p class="message">Cadastre-se agora e tenha acesso total ao nosso aplicativo. </p>
+
+//         <label>
+//             <input class="input" type="text" placeholder="" required="" id="name">
+//             <span>Nome</span>
+//         </label>
+
+//         <label>
+//             <input class="input" type="email" placeholder="" required="" id="email">
+//             <span>Email</span>
+//         </label>
+
+//         <label>
+//             <input class="input" type="password" placeholder="" required="" id="password">
+//             <span>Senha</span>
+//         </label>
+
+//         <button class="submit">Cadastrar</button>
+//         <p class="signin">Já possui o cadastro ? <a href="login.html">Entrar</a></p>`;
+           
+//         });
+//         form.innerHTML = imprimir;
+//     }
+//     else{
+//         form.innerHTML = "Registro não relizado";
+//     }
+// }),
 
 $.ajax({
     method: "GET",
@@ -97,6 +141,71 @@ carIcon.onclick = () => {
 closeCar.onclick = () => {
     car.classList.remove("active")
 };
+
+if (document.readyState == "loading") {
+    document.addEventListener("DOMContentLoaded", ready);
+} else {
+    ready();
+}
+
+function ready() {
+    var removeCar = document.querySelectorAll(".remove-trash");
+    removeCar.forEach(function(button) {
+        button.addEventListener("click", removeCarItem);
+    });
+
+    var quantityInputs = document.querySelectorAll(".car-quantity");
+    quantityInputs.forEach(function(input) {
+        input.addEventListener("change", quantityChanged);
+    });
+}
+
+// remover items do carrinho
+function removeCarItem(event) {
+    var buttonClicked = event.target;
+    var carBox = buttonClicked.closest(".car-box");
+    carBox.remove(); // removendo elemento pai
+    updateTotal();
+}
+
+// quantity changes
+function quantityChanged(event) {
+    var input = event.target;
+    if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1;
+    }
+    updateTotal();
+}
+
+// atualizar
+function updateTotal() {
+    var carContent = document.querySelector(".car-content");
+    var carBoxes = carContent.querySelectorAll(".car-box");
+    var total = 0;
+
+    carBoxes.forEach(function(carBox) {
+        var priceElement = carBox.querySelector(".car-product-price");
+        var quantityElement = carBox.querySelector(".car-quantity");
+        
+        if(priceElement && quantityElement) {
+            var price = parseFloat(priceElement.innerText.replace("R$ ", "").replace(",", "."));
+            var quantity = parseInt(quantityElement.value);
+
+            if(!isNaN(price) && !isNaN(quantity)) {
+                total += price * quantity;
+            }
+        }
+    });
+
+    // arredondar total para 2 casas decimais
+    total = Math.round(total * 100) / 100;
+
+    var totalPriceElement = document.querySelector(".total-price");
+    if(totalPriceElement) {
+        totalPriceElement.innerText = "R$ " + total.toFixed(2);
+    }
+}
+
 
 //FIM CARRINHO DE COMPRA
 

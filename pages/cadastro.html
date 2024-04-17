@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -13,37 +13,29 @@
     <nav class="navbar">
        <a href="../index.html"><img src="../assets/img/logo1.png"  class="logo"></a> 
     </nav>
-    <form class="form">
-        <p class="title">Registrar </p>
+    <form class="form" id="form">
         <p class="message">Cadastre-se agora e tenha acesso total ao nosso aplicativo. </p>
 
         <label>
-            <input class="input" type="text" placeholder="" required="">
+            <input class="input" type="text" placeholder="" required="" id="name">
             <span>Nome</span>
         </label>
 
-
         <label>
-            <input class="input" type="email" placeholder="" required="">
+            <input class="input" type="email" placeholder="" required="" id="email">
             <span>Email</span>
         </label>
 
         <label>
-            <input class="input" type="number" placeholder="" required="">
-            <span>Telefone</span>
-        </label>
-
-        <label>
-            <input class="input" type="password" placeholder="" required="">
+            <input class="input" type="password" placeholder="" required="" id="password">
             <span>Senha</span>
         </label>
-        <label>
-            <input class="input" type="password" placeholder="" required="">
-            <span>Confirmar Senha</span>
-        </label>
+
         <button class="submit">Cadastrar</button>
-        <p class="signin">Já possui o cadastro ? <a href="login.html">Entrar</a> </p>
+        <p class="signin">Já possui o cadastro ? <a href="login.html">Entrar</a></p>
     </form>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../assets/js/script.js"></script>
 </html>
