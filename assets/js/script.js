@@ -2,50 +2,36 @@
 
 let url_initial = "http://localhost:8080/";
 const products_div = document.getElementById("products");
-const form = document.getElementById("form");
+// const form = document.getElementById("form");
 
-// $.ajax({
-//     method:"POST",
-//     url: url_initial + "users/insert",
-//     dataType: "JSON",
-//     data:{
-//         name: nome,
-//         email: email,
-//         password: password
-//     }
-// }).done(function (response) {
-//     if(response.length > 0){
-//         let imprimir = "";
-//         $.each(response, function(i){
-//             imprimir += ` 
-//             <p class="title">Registrar </p>
-//         <p class="message">Cadastre-se agora e tenha acesso total ao nosso aplicativo. </p>
 
-//         <label>
-//             <input class="input" type="text" placeholder="" required="" id="name">
-//             <span>Nome</span>
-//         </label>
+// function CadastrarUsuario()
+// {
+//     let nome = document.getElementById("name");
+//     let senha = document.getElementById("password");
+//     let email = document.getElementById("email");
 
-//         <label>
-//             <input class="input" type="email" placeholder="" required="" id="email">
-//             <span>Email</span>
-//         </label>
+//     console.log("name = "+nome.value)
+//     console.log("senha = "+senha.value)
+//     console.log("email = "+email.value)
 
-//         <label>
-//             <input class="input" type="password" placeholder="" required="" id="password">
-//             <span>Senha</span>
-//         </label>
 
-//         <button class="submit">Cadastrar</button>
-//         <p class="signin">Já possui o cadastro ? <a href="login.html">Entrar</a></p>`;
-           
-//         });
-//         form.innerHTML = imprimir;
-//     }
-//     else{
-//         form.innerHTML = "Registro não relizado";
-//     }
-// }),
+//     $.ajax({
+//         method:"POST",
+//         url: url_initial + "users/insert",
+//         dataType: "JSON",
+//         data:{
+//             name: nome.value,
+//             email: email.value,
+//             password: senha.value
+//         }
+//     }).done(function (response) {
+//         console.log(response);
+//     }).fail(function(erro){
+//         console.log(erro)
+//     })
+// }
+
 
 $.ajax({
     method: "GET",
