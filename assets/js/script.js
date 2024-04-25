@@ -44,7 +44,7 @@ $.ajax({
             imprimir += ` 
             <div class="card">
                 <div class="card-img">
-                    <img src="assets/img/carretilha.png">
+                    <img src="${response[i].img_path}" alt="${response[i].name}">
                 </div>
                 <div class="card-title">
                     ${response[i].name}
