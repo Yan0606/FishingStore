@@ -159,7 +159,7 @@ height: auto;
 .car{
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -150%;
   width: 360px;
   min-height: 100vh;
   padding: 20px;
@@ -407,10 +407,14 @@ button:active {
 /* Estilos do footer */
 
 .footer {
-background-color: #F0EDCF;
-color: #000000;
-padding: 20px 0;
-}
+  background-color: #F0EDCF;  
+  color: #000000;
+  padding: 20px 0;
+  width: 100%;
+  margin: auto;
+  bottom: 0;
+  position: fixed;
+  }
 
 .footer-container {
 display: flex;
@@ -471,4 +475,9 @@ margin-right: 0;
 
 
 }
+
+/* @media (max-width: 1080px) {
+
+  
+} */
 
