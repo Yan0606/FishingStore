@@ -166,6 +166,7 @@ height: auto;
   background: #fff;
   box-shadow: -2px 0 4px hsl(0%, 4%, 15% / 10%);
   transition: 0.3s;
+  z-index: 3;
 }
 .car.active{
   right: 0;
@@ -176,6 +177,14 @@ height: auto;
   font-size: 1.5rem;
   font-weight: 100;
   margin-top: 2rem;
+}
+
+.car-content{
+  overflow: hidden;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    height: 350px;
 }
 
 .car-box{
@@ -409,11 +418,12 @@ button:active {
 .footer {
   background-color: #F0EDCF;  
   color: #000000;
-  padding: 20px 0;
   width: 100%;
   margin: auto;
   bottom: 0;
-  position: fixed;
+  display: block;
+  position: relative;
+  clear: both;
   }
 
 .footer-container {
@@ -476,8 +486,4 @@ margin-right: 0;
 
 }
 
-/* @media (max-width: 1080px) {
-
-  
-} */
 
