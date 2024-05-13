@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/cadastrarProduto.css">
+    <title>FishingStore - Inserir Produto</title>
+
+</head>
+
+<body>
+    <nav class="navbar">
+       <a href="../index.html"><img src="../assets/img/logo1.png"  class="logo"></a> 
+    </nav>
+    <form class="form" id="form">
+        <p class="message">Insira o produto desejado. </p>
+        
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="name">
+            <span>Nome do Produto</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="description">
+            <span>Descrição</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="amount">
+            <span>Quantidade</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="value">
+            <span>Valor</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="img_path">
+            <span>Foto</span>
+        </label>
+
+        <button class="submit" type="button" onclick="CadastrarProduto()" id="btnCadastrar">Cadastrar</button>
+        <p class="signin">Já possui o cadastro ? <a href="login.html">Entrar</a></p>
+    </form>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../assets/js/script.js"></script>
+</html>
