@@ -165,11 +165,20 @@ function ready() {
 }
 
 //buy button
-function buyButtonCLicked(){
-    alert ('Seu pedido foi enviado!')
-    var cartCotent = document.getElementsByClassName('car-content')[0]
-    while (cartCotent.hasChildNodes()){
-        cartCotent.removeChild(cartCotent.firstChild);
+function buyButtonCLicked() {
+    var total = parseFloat(document.querySelector(".total-price").innerText.replace("R$ ", "").replace(",", "."));
+
+    // Verifica se o total é 0
+    if (total === 0) {
+        alert('Seu carrinho está vazio!');
+        return; // Sai da função se o carrinho estiver vazio
+    }
+    else {
+        alert('Seu pedido foi enviado!')
+        var cartCotent = document.getElementsByClassName('car-content')[0]
+        while (cartCotent.hasChildNodes()) {
+            cartCotent.removeChild(cartCotent.firstChild);
+        }
     }
     updateTotal();
 }
