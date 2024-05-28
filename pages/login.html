@@ -12,17 +12,19 @@
         <p class="title">Entrar </p>
                 
         <label>
-            <input class="input" type="email" placeholder="" required="">
+            <input class="input" id="email" type="email" placeholder="" required="">
             <span>Email</span>
         </label> 
       
         <label>
-            <input class="input" type="password" placeholder="" required="">
+            <input class="input" id="password" type="password" placeholder="" required="">
             <span>Senha</span>
         </label>
 
-        <button class="submit">Entrar</button>
+        <button type="button" class="submit" onclick="enviarFormulario()">Entrar</button>
         <p class="signin">Não possui cadastro ? <a href="cadastro.html">Cadastre-se</a> </p>
     </form>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../assets/js/login.js"></script>
 </html>
