@@ -1,0 +1,155 @@
+nav {
+    width: 100%;
+    height: 4rem;
+    background-color: #f5f0b9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    width: 3rem;
+}
+
+.form {
+    margin: 32px auto;
+    width: 458px;
+    padding: 24px;
+    margin: 10rem auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
+    border-radius: 3px;
+}
+
+.label1{
+    padding: 10px;
+    border-bottom:  1px solid var(--decorative-subdued, #dedede);
+}
+
+.label2{
+    padding: 5px;
+}
+
+.payment-method {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 10px auto;
+    background-color: #fff;
+
+}
+
+.payment-method label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.payment-method input[type="radio"] {
+    margin-right: 10px;
+}
+
+.payment-method .card-options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.payment-method .card-options img {
+    height: 24px;
+    margin-right: 5px;
+}
+
+.payment-method .more-options {
+    position: relative;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #a8a8a8;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.payment-method .more-options .dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.payment-method .more-options:hover .dropdown {
+    display: block;
+}
+
+.payment-method .dropdown img {
+    height: 24px;
+    margin: 2px 5px 2px 0;
+}
+
+.payment-form,
+.debit-form {
+    display: none;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 90%;
+}
+
+.payment-form input,
+.debit-form input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.payment-form label,
+.debit-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.payment-form .form-group,
+.debit-form .form-group {
+    margin-bottom: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn-buy {
+    display: flex;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-buy:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
