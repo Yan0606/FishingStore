@@ -111,10 +111,10 @@ function filterCards() {
 }
 // FIM DA SEARCH BAR
 
+
 //MOBILE-MENU
 function menuShow() {
     let menuMobile = document.querySelector('.mobile-menu');
-
 
     if (menuMobile.classList.contains('open')) {
         menuMobile.classList.remove('open');
@@ -126,7 +126,6 @@ function menuShow() {
 }
 
 //CARRINHO DE COMPRA
-
 let carIcon = document.querySelector('#car-icon');
 let car = document.querySelector('.car');
 let closeCar = document.querySelector('#close-car');
@@ -138,7 +137,6 @@ carIcon.onclick = () => {
 closeCar.onclick = () => {
     car.classList.remove("active")
 };
-
 
 
 function ready() {
@@ -171,10 +169,11 @@ function buyButtonCLicked() {
     // Verifica se o total é 0
     if (total === 0) {
         alert('Seu carrinho está vazio!');
-        return; // Sai da função se o carrinho estiver vazio
+        return; 
     }
     else {
         alert('Seu pedido foi enviado!')
+        window.location.href = './pages/pagamento.html';
         var cartCotent = document.getElementsByClassName('car-content')[0]
         while (cartCotent.hasChildNodes()) {
             cartCotent.removeChild(cartCotent.firstChild);
@@ -242,8 +241,6 @@ function addProductToCart(title, price, productImg) {
     cartShopBox.getElementsByClassName('car-quantity')[0].addEventListener('change', quantityChanged)
 }
 
-
-
 // atualizar
 function updateTotal() {
     var carContent = document.querySelector(".car-content");
@@ -273,8 +270,5 @@ function updateTotal() {
     }
 }
 
-
 //FIM CARRINHO DE COMPRA
-
-
 //FIM DO MOBILE MENU
