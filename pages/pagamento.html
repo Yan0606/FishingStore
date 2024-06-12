@@ -41,27 +41,27 @@
                     <div class="payment-form" id="payment-form">
                         <div class="form-group">
                             <label for="card-number">Número do cartão</label>
-                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000">
+                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" required>
                         </div>
                         <div class="form-group">
                             <label for="expiry-date">Data de validade</label>
-                            <input type="text" id="expiry-date" placeholder="MM/AA">
+                            <input type="month" id="expiry-date" placeholder="MM/AA" required>
                         </div>
                         <div class="form-group">
                             <label for="security-code">Código de segurança</label>
-                            <input type="text" id="security-code" placeholder="CVV">
+                            <input type="text" id="security-code" placeholder="CVV" maxlength="3" required>
                         </div>
                         <div class="form-group">
                             <label for="cardholder-name">Nome completo</label>
-                            <input type="text" id="cardholder-name" placeholder="">
+                            <input type="text" id="name" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" placeholder="seuemail@exemplo.com">
+                            <input type="email" id="email" placeholder="seuemail@exemplo.com" required> 
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF</label>
-                            <input type="text" id="cpf" placeholder="000.000.000-00">
+                            <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
                         </div>
                         <button type="button" class="btn-buy">Continuar compra</button>
                     </div>
@@ -88,23 +88,23 @@
                     <div class="debit-form" id="debit-form">
                         <div class="form-group">
                             <label for="debit-card-number">Número do cartão</label>
-                            <input type="text" id="debit-card-number" placeholder="0000 0000 0000 0000">
+                            <input type="text" id="debit-card-number" placeholder="0000 0000 0000 0000" required>
                         </div>
                         <div class="form-group">
                             <label for="debit-expiry-date">Data de validade</label>
-                            <input type="text" id="debit-expiry-date" placeholder="MM/AA">
+                            <input type="month" id="debit-expiry-date" placeholder="MM/AA" required>
                         </div>
                         <div class="form-group">
                             <label for="debit-cardholder-name">Nome completo</label>
-                            <input type="text" id="debit-cardholder-name" placeholder="">
+                            <input type="text" id="debit-cardholder-name" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label for="debit-email">E-mail</label>
-                            <input type="email" id="debit-email" placeholder="seuemail@exemplo.com">
+                            <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
                         </div>
                         <div class="form-group">
                             <label for="debit-cpf">CPF</label>
-                            <input type="text" id="debit-cpf" placeholder="000.000.000-00">
+                            <input type="text" id="debit-cpf" placeholder="000.000.000-00" maxlength="14" required>
                         </div>
                         <button type="button" class="btn-buy">Continuar compra</button>
                     </div>

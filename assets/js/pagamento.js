@@ -10,3 +10,20 @@ function toggleForms(paymentType) {
         debitForm.style.display = 'block';
     }
 }
+
+// Para formatar o input cpf
+document.getElementById('cpf').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, ''); // Remove todos caracteres não númericos
+    value = value.replace(/^(\d{3})(\d)/, '$1.$2'); // Add o primeiro ponto
+    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Add o segundo ponto
+    value = value.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Add o traso
+    e.target.value = value.slice(0, 14); // Limit length to 14 characters
+});
+
+document.getElementById('debit-cpf').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, ''); // Remove todos caracteres não númericos
+    value = value.replace(/^(\d{3})(\d)/, '$1.$2'); // Add o primeiro ponto
+    value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Add o segundo ponto
+    value = value.replace(/\.(\d{3})(\d)/, '.$1-$2'); // Add o traso
+    e.target.value = value.slice(0, 14); // Limit length to 14 characters
+});
