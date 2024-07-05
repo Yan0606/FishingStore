@@ -1,4 +1,4 @@
-const url_initial = "http://localhost:8080/";
+const url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 
 function CadastrarUsuario(){
     let name1 = document.getElementById("name1").value;

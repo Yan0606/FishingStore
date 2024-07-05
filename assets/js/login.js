@@ -1,4 +1,4 @@
-let url_initial = "http://localhost:8080/";
+let url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 
 function enviarFormulario() {
     const email = document.getElementById("email").value;
@@ -18,6 +18,7 @@ function enviarFormulario() {
     }).done(async function (response) {
         alert(response.message);
         localStorage.setItem("token", response.token); // adiciona token ao banco de dados do navegador
+        localStorage.setItem("id", response.id); // adiciona token ao banco de dados do navegador
         const token = localStorage.getItem("token"); //pega o token do banco de dados do navegador
         console.log("TOKEN NO LOCAL STORAGE =>"+token); //exibe o token no console, só pra conferir :)
         window.location.href = "../index.html";

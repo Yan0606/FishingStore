@@ -1,4 +1,4 @@
-let url_initial = "http://localhost:8080/";
+let url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 
 function CadastrarProduto() {
     let name1 = document.getElementById("name1").value;

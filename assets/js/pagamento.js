@@ -1,3 +1,20 @@
+// REQUISIÇÃO 
+let url_initial = "http://localhost/E-commerceAPI-PHPpure/";
+
+$.ajax({
+    method: "POST",
+    url: url_initial + "sales/init",
+    data: { user_id: localStorage.getItem("id") },
+    contentType: "application/json; charset=utf-8",
+    dataType: "JSON",
+}).done(async function (response) {
+    alert(response.message);
+}).fail(function (error) {
+    alert(error.responseJSON.message);
+})
+
+
+
 function toggleForms(paymentType) {
     const creditForm = document.getElementById('payment-form');
     const debitForm = document.getElementById('debit-form');
