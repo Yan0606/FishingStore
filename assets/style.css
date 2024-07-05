@@ -298,6 +298,232 @@ button:active {
 
 /* ====== END NAVBAR ====== */
 
+/* ====== CARROSSEL ====== */
+:root{
+  --cor-pad1: #0091AD;
+  --cor-pad2: #FFC800;
+  --cor-pad3: #040404;
+  --cor-pad4: #752E03;
+  --cor-pad5: #FFFAFF;
+  --cor-pad6: #FF1616;
+
+
+  --font-texto: 'Josefin Sans', sans-serif;
+
+  --cor-sombra1: #daaa00;
+  --cor-sombra2: #471B00;
+
+  --sombraApagada: #04040436;
+}
+
+
+.secao1{
+  width: 100%;
+  background-color: var(--cor-pad5);
+  overflow-y: hidden; 
+}
+
+header{
+  position: relative;
+  z-index: 5;
+  box-shadow: 0em 0em 1em 0.3em;
+}
+
+.carrossel{
+  position: relative;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 87vh;
+  overflow: hidden;
+  background-color: rgb(58, 58, 58);
+}
+
+.slider{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#slider1{
+  top: 0;
+  left: 0%;
+  z-index: 1;
+  background-image: url("../assets/img/carrossel/Fishing\ Store\ \(1\).png");
+}
+
+#slider2{
+  top: 0;
+  left: 100%;
+  z-index: 2;
+  background-image: url("../assets/img/carrossel/wpp2-FishingStore.png");
+}
+
+#slider3{
+  top: 0;
+  left: 200%;
+  z-index: 3;
+  opacity: 1;
+  background-color: red;
+}
+.position1{
+  left: -100%;
+}
+.carrossel:hover .backSlider, .carrossel:hover .nextSlider{
+  opacity: 1;
+}
+.backSlider{
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0;
+  transition: 0.3s linear;
+  width: 5%;
+  height: 10%;
+  background-color: var(--sombraApagada);
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+.nextSlider{
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0;
+  transition: 0.3s linear;
+  width: 5%;
+  height: 10%;
+  background-color: var(--sombraApagada);
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+.nextSlider img{
+  width: 16px;
+}
+.backSlider img{
+  width: 16px;
+}
+
+.seta{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.backSlider:hover .animacao-seta-e{
+  animation: setinhaE 1.5s ease-in-out infinite;
+}
+.backSlider:hover{
+  cursor: pointer;
+}
+
+.nextSlider:hover{
+  cursor: pointer;
+}
+.nextSlider:hover .animacao-seta-d{
+  animation: setinhaD 1.5s ease-in-out infinite;
+  cursor: pointer;
+}
+
+
+@keyframes setinhaD {
+  0%{
+      left: 50%;
+  }
+  50%{
+      left: 65%;
+  }
+  100%{
+      left: 50%;
+  }
+}
+@keyframes setinhaE {
+  0%{
+      left: 50%;
+  }
+  50%{
+      left: 35%;
+  }
+  100%{
+      left: 50%;
+  }
+}
+
+@keyframes puxarSlideE{
+  0%{
+      left: -100%;
+  }
+  100%{
+      left: 0%;
+  }
+}
+@keyframes puxarSlideD{
+  0%{
+      left: 100%;
+  }
+  100%{
+      left: 0%;
+  }
+}
+@keyframes sairSlideD{
+  0%{
+      left: 0%;
+  }
+  100%{
+      left: 100%;
+  }
+}
+@keyframes sairSlideE{
+  0%{
+      left: 0%;
+  }
+  100%{
+      left: -100%;
+  }
+}
+
+.puxarE{
+  animation: puxarSlideE 800ms linear;
+}
+.puxarD{
+  animation: puxarSlideD 800ms linear;
+}
+
+.sairD{
+  animation: sairSlideD 800ms linear;
+}
+.sairE{
+  animation: sairSlideE 800ms linear;
+}
+
+
+@media screen and (max-width: 500px){
+.carrossel{
+  height: 35vh;
+}
+.backSlider{
+  height: 100%;
+  width: 15%;
+  border-radius: 0;
+  font-size:8px;
+}
+.nextSlider{
+  height: 100%;
+  width: 15%;
+  border-radius: 0;
+  font-size:8px;
+}
+}
+
+/* ====== END CARROSSEL ====== */
 
 .grid-container {
   display: grid;
@@ -306,6 +532,7 @@ button:active {
   gap: 20px; 
   padding: 20px;
   justify-items: center;
+  margin-top: 5.5rem;
   
 }
 

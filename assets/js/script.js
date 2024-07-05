@@ -1,37 +1,8 @@
 // ====REQUISIÇÃO DA API ====
 
-let url_initial = "http://localhost:8080/";
+let url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 const products_div = document.getElementById("products");
-
-// const form = document.getElementById("form");
-
-
-// function CadastrarUsuario()
-// {
-//     let nome = document.getElementById("name");
-//     let senha = document.getElementById("password");
-//     let email = document.getElementById("email");
-
-//     console.log("name = "+nome.value)
-//     console.log("senha = "+senha.value)
-//     console.log("email = "+email.value)
-
-
-//     $.ajax({
-//         method:"POST",
-//         url: url_initial + "users/insert",
-//         dataType: "JSON",
-//         data:{
-//             name: nome.value,
-//             email: email.value,
-//             password: senha.value
-//         }
-//     }).done(function (response) {
-//         console.log(response);
-//     }).fail(function(erro){
-//         console.log(erro)
-//     })
-// }
+let shopping_cart = [];
 
 function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
@@ -54,6 +25,7 @@ $.ajax({
             let tituloLimitado2 = limitarCaracteres(response[i].description, 45); // Aqui você pode definir o limite de caracteres desejado
             imprimir += ` 
             <div class="card" >
+                <input type='hidden' name='id' value='${response[i].id}'>
                 <div class="card-img">
                     <img src="${response[i].img_path}" alt="${tituloLimitado}">
                 </div>
@@ -65,7 +37,7 @@ $.ajax({
                 </div>
             <hr class="card-divider">
             <div class="card-footer">
-                <div class="card-price"><span>R$</span> ${response[i].value}</div>
+                <div class="card-price" title="${response[i].value}"><span>R$</span> ${response[i].value}</div>
                     <button class="card-btn">
                         <img src="assets/img/icons/carrinho-carrinho.png">
                     </button>
@@ -152,9 +124,15 @@ function ready() {
 
     // add to Car
     const addCard = document.querySelectorAll(".card-btn");
+    
     for (let i = 0; i < addCard.length; i++) {
+        let full_card = addCard[i].parentNode.parentNode;
         addCard[i].addEventListener("click", () => {
-            addCartClicked(addCard[i])
+            let id = full_card.querySelector("[name='id']").value;
+            addCartClicked(addCard[i], id);
+            let name = full_card.querySelector(".card-title").getAttribute("title");
+            let price = full_card.querySelector(".card-price").getAttribute("title");
+           
         })
     }
     document
@@ -165,19 +143,60 @@ function ready() {
 //buy button
 function buyButtonCLicked() {
     var total = parseFloat(document.querySelector(".total-price").innerText.replace("R$ ", "").replace(",", "."));
+   
 
     // Verifica se o total é 0
     if (total === 0) {
         alert('Seu carrinho está vazio!');
-        return; 
+        return;
     }
     else {
-        alert('Seu pedido foi enviado!')
-        window.location.href = './pages/pagamento.html';
-        var cartCotent = document.getElementsByClassName('car-content')[0]
-        while (cartCotent.hasChildNodes()) {
-            cartCotent.removeChild(cartCotent.firstChild);
-        }
+        let data = {
+            user_id: localStorage.getItem("id")
+        };
+        $.ajax({
+            method: "POST",
+            url: url_initial + "sales/init",
+            data: JSON.stringify(data),
+            dataType: "JSON",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token')  // Corrigido para Authorization e getItem
+            }
+        }).done(async function (response) {
+            let sales_id = response.id;
+            console.log("id da venda = "+sales_id);
+            alert('Seu pedido foi enviado!');
+            let cart = document.querySelectorAll(".car-box");
+
+            for(let i =0; i < cart.length; i++)
+            {
+                let id = cart[i].querySelector("[name='id']").getAttribute("data-id");
+                let quantity = cart[i].querySelector("[name='qtd']").value;
+                let sales_item = {
+                    sales_id,
+                    product_id: id,
+                    amount: quantity
+                }
+                $.ajax({
+                    url: url_initial + "salesproducts/insert",
+                    method: "POST",
+                    data: JSON.stringify(sales_item),
+                    dataType: "JSON",
+                    contentType: "application/json; charset=utf-8",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem('token')  // Corrigido para Authorization e getItem
+                    }
+                }).done(async function (response) {
+                    console.log("INSERIU ITEM DE VENDA, N- DA VEZ = "+i);
+                }).fail(async function (err) {
+                    alert("ERRO = "+err);
+                })
+            }
+           
+        }).fail(function (error) {
+            alert(error.responseJSON.message);
+        })
     }
     updateTotal();
 }
@@ -200,12 +219,12 @@ function quantityChanged(event) {
 }
 
 //add to cart
-function addCartClicked(event) {
+function addCartClicked(event, id) {
     let price = event.parentNode.getElementsByClassName("card-price")[0].textContent;
     let title = event.parentNode.parentNode.getElementsByClassName("card-title")[0].textContent;
     let productImg = event.parentNode.parentNode.getElementsByClassName("card-img")[0].querySelector("img").src;
-
-    addProductToCart(title, price, productImg);
+    
+    addProductToCart(title, price, productImg, id);
     updateTotal();
 }
 
@@ -213,7 +232,7 @@ function addCartClicked(event) {
 
 
 
-function addProductToCart(title, price, productImg) {
+function addProductToCart(title, price, productImg, id) {
     var cartShopBox = document.createElement("div");
     cartShopBox.classList.add('car-box')
     var cartItems = document.getElementsByClassName('car-content')[0];
@@ -228,9 +247,10 @@ function addProductToCart(title, price, productImg) {
     var cartBoxContent = `
     <img src="${productImg}" alt="" class="car-img">
         <div class="detail-box">
+            <input type='hidden' name='id' data-id='${id}'>
             <div class="car-product-title">${title}</div>
             <div class="car-product-price">${price}</div>
-            <input type="number" value="1" class="car-quantity">
+            <input type="number" value="1" name="qtd" class="car-quantity">
         </div>
         <!-- fecha a aba do carrinho --> 
         <p><img src="assets/img/icons/trash.png" class="remove-trash"></p>
@@ -272,3 +292,127 @@ function updateTotal() {
 
 //FIM CARRINHO DE COMPRA
 //FIM DO MOBILE MENU
+var template1 = document.getElementById('slider1');
+var template2 = document.getElementById('slider2');
+var template3 = document.getElementById('slider3');
+var auxi = 1;
+
+function nextSlider(){
+    if(auxi == 1){
+    
+        template2.classList.remove('sairE');
+        template2.classList.remove('sairD');
+        template2.classList.add('puxarD');
+        template2.style.left= '0%';
+
+        template1.classList.add('sairE');
+        template1.style.left= '-100%';
+        template3.style.left= '100%';
+
+        auxi = 2;
+    }
+    else if(auxi == 2){
+        
+        template3.classList.remove('sairE');
+        template3.classList.remove('sairD');
+        template3.classList.add('puxarD');
+        template3.style.left= '0%';
+
+        template2.classList.remove('puxarD');
+        template2.classList.add('sairE');
+
+        template2.style.left= '-100%';
+        template1.style.left= '100%'
+
+        auxi = 3;
+    }
+    else if(auxi == 3){
+        template3.classList.remove('puxarE')
+        template3.classList.remove('puxarD');
+        template3.classList.add('sairE');
+        template3.style.left= '-100%';
+
+        template1.classList.remove('sairD');
+        template1.classList.remove('sairE');
+        template1.classList.add('puxarD');
+        template1.style.left= '0%';
+
+        template2.style.left= '100%';
+
+        auxi = 1;
+    }
+
+    // console.log('workNext');
+}
+
+var autoNext = setInterval(nextSlider, 5500);
+
+// const click = document.querySelector('#next');
+
+// click.addEventListener('click', function(){
+//     fundo.style.backgroundColor= 'white';
+//     clearInterval(autoNext);
+//     setTimeout(function(){
+    
+//     setTimeout(function(){
+//         var autoNext2 = setInterval(nextSlider, 1000);
+//     }, 2000);
+
+// });
+
+
+function backSlider(){
+
+    if(auxi == 1){
+
+        template3.classList.remove('sairD');
+        template3.classList.remove('sairE');
+        template3.classList.remove('puxarD');
+        template3.classList.add('puxarE');
+        template3.style.left= '0%';
+        
+        template1.classList.remove('puxarD');
+        template1.classList.remove('puxarE');
+        template1.classList.remove('sairE');
+        template1.classList.add('sairD');
+        template1.style.left= '100%';
+
+        template2.style.left= '-100%';
+
+        auxi = 3;
+    }
+    else if(auxi == 2){
+        template1.classList.remove('sairE');
+        template1.classList.remove('sairD');
+        template1.classList.remove('puxarD');
+        template1.classList.add('puxarE');
+        template1.style.left= '0%';
+
+        template2.classList.remove('puxarE');
+        template2.classList.remove('sairE');
+        template2.classList.remove('puxarD');
+        template2.classList.add('sairD');
+        template2.style.left= '100%';
+
+        template3.style.left= '-100%';
+        auxi = 1;
+    }
+    else if(auxi == 3){
+        template2.classList.remove('sairE');
+        template2.classList.remove('puxarD');
+        template2.classList.remove('sairD');
+        template2.classList.add('puxarE');
+        template2.style.left= '0%';
+
+        template3.classList.remove('puxarE');
+        template3.classList.remove('puxarD');
+        template3.classList.add('sairD');
+        template3.style.left= '100%';
+
+        template1.style.left= '-100%';
+
+        auxi = 2;
+    }
+}
+
+const fundo = document.querySelector('#apresentacao');
