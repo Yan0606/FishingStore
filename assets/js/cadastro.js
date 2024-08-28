@@ -1,17 +1,17 @@
 const url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 
-function CadastrarUsuario(){
+function CadastrarUsuario() {
     let name1 = document.getElementById("name1").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    let  data= {
+    let data = {
         name: name1,
         email: email,
         password: password
-    }; 
+    };
 
-    if(!name1 || name1.length < 5){
+    if (!name1 || name1.length < 5) {
         alert("campo não existe ou é pequeno demais");
         return;
     }
