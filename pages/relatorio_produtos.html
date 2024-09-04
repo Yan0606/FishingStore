@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,73 +8,9 @@
     <title>Relatório de Produtos</title>
     <link rel="stylesheet" href="../assets/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #007bff;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .btn {
-            padding: 6px 10px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-edit {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-edit:hover {
-            background-color: #218838;
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/relatorioProduto.css">
 </head>
+
 <body>
 
     <h1>Relatório de Produtos</h1>
@@ -95,63 +32,7 @@
             <!-- Conteúdo da tabela será preenchido pelo JavaScript -->
         </tbody>
     </table>
-
-    <script>
-        const url_initial = "http://localhost/E-commerceAPI-PHPpure/";
-
-        // Função para carregar os produtos do banco de dados
-        function carregarProdutos() {
-            $.ajax({
-                method: "GET",
-                url: url_initial + "products/getall", // Endpoint para obter todos os produtos
-                dataType: "json",
-                success: function (response) {
-                    const produtos = response; // Supondo que a resposta seja um array de produtos
-                    const tabelaBody = document.querySelector("#tabela-produtos tbody");
-
-                    // Limpa o conteúdo anterior da tabela
-                    tabelaBody.innerHTML = "";
-
-                    // Popula a tabela com os produtos
-                    produtos.forEach(produto => {
-                        const row = document.createElement("tr");
-
-                        row.innerHTML = `
-                            <td>${produto.id}</td>
-                            <td>${produto.name}</td>
-                            <td>${produto.description}</td>
-                            <td>R$ ${produto.value.toFixed(2)}</td>
-                            <td>${produto.amount}</td>
-                            <td><img src="${produto.img_path}" alt="${produto.name}" style="width: 50px; height: 50px;"></td>
-                            <td>
-                                <button class="btn btn-edit" onclick="editarProduto(${produto.id})">Editar</button>
-                                <button class="btn btn-delete" onclick="excluirProduto(${produto.id})">Excluir</button>
-                            </td>
-                        `;
-
-                        tabelaBody.appendChild(row);
-                    });
-                },
-                error: function (error) {
-                    alert("Erro ao carregar produtos: " + (error.responseJSON?.message || error.statusText));
-                }
-            });
-        }
-
-        // Funções de exemplo para editar e excluir produto
-        function editarProduto(id) {
-            alert('Editar produto com ID: ' + id);
-            // Aqui você pode adicionar o código para editar o produto
-        }
-
-        function excluirProduto(id) {
-            if (confirm('Deseja realmente excluir o produto com ID: ' + id + '?')) {
-                alert('Produto com ID ' + id + ' excluído');
-                // Aqui você pode adicionar o código para excluir o produto
-            }
-        }
-
-        window.onload = carregarProdutos;
-    </script>
 </body>
+<script type="text/javascript" src="../assets/js/relatorioProduto.js" defer></script>
+
 </html>
