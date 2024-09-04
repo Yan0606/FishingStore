@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="../assets/css/editarProduto.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Editar Produto</h1>
+    <form id="form-editar-produto">
+        <input type="hidden" id="produto-id" name="id" >
+        
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="name" required value="">
+        
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="description" required value=""></textarea>
+        
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="value" value="" step="0.01" required>
+        
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="amount" value="" required>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../assets/js/editarProduto.js"></script> 
+
+</html>
