@@ -4,31 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FishingStore</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>FishingStore-ADM</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="logo"><img src="assets/img/logo1.png"></div>
+        <div class="logo"><img src="../assets/img/logo1.png"></div>
 
         <div class="search-box">
             <input type="search" id="searchInput" placeholder="Pesquisar...">
-            <button type="button" onclick="filterCards()"><img src="assets/img/icons/lupa.png"></button>
+            <button type="button" onclick="filterCards()"><img src="../assets/img/icons/lupa.png"></button>
         </div>
 
         <div class="links">
             <ul>
-                <li class="nav-item"><a href="pages/cadastrarProduto.html" class="link"><img
-                            src="assets/img/icons/produtos.png"></a></li>
-                <li class="nav-item"><a href="#" class="link" id="car-icon"><img
-                            src="assets/img/icons/carrinho-carrinho.png"></a></li>
-                <li class="nav-item"><a href="pages/cadastro.html" class="link"><img
-                            src="assets/img/icons/pessoa.png"></a></li>
+                <li class="nav-item"><a href="./relatorio_produtos.html" class="link" id="car-icon">Relatório de Produtos</a></li>
+                <li class="nav-item"><a href="#" class="link" id="car-icon">Relatório de Usuários</a></li>
             </ul>
         </div>
         <div class="mobile-menu-icon">
-            <button onclick="menuShow()"><img class="icon" src="assets/img/icons/menu-aberto.png"></button>
+            <button onclick="menuShow()"><img class="icon" src="../assets/img/icons/menu-aberto.png"></button>
         </div>
 
         <div class="car">
@@ -42,7 +38,7 @@
                     <div class="total-price">0.00</div>
                 </div>
                 <button type="button" class="btn-buy">Comprar agora</button>
-                <p id="close-car"><img src="assets/img/icons/x.png"></p>
+                <p id="close-car"><img src="../assets/img/icons/x.png"></p>
         </div>
         </div>
 
@@ -50,12 +46,12 @@
 
     <div class="mobile-menu">
         <ul>
-            <li class="nav-item"><a href="pages/cadastro.html" class="link"><img src="assets/img/icons/pessoa.png"></a>
+            <li class="nav-item"><a href="pages/cadastro.html" class="link"><img src="../assets/img/icons/pessoa.png"></a>
             </li>
             <li class="nav-item"><a href="#" class="link" id="car-icon"><img
-                        src="assets/img/icons/carrinho-carrinho.png"></a></li>
+                        src="../assets/img/icons/carrinho-carrinho.png"></a></li>
             <li class="nav-item"><a href="pages/cadastrarProduto.html" class="link"><img
-                        src="assets/img/icons/produtos.png"> </a></li>
+                        src="../assets/img/icons/produtos.png"> </a></li>
         </ul>
     </div>
 
@@ -65,19 +61,18 @@
 
             <div class="carrossel">
                 <div class="backSlider" onclick="backSlider()">
-                    <img src="assets/img/icons/seta-esquerda.png" alt="voltar" class="seta animacao-seta-e">
+                    <img src="../assets/img/icons/seta-esquerda.png" alt="voltar" class="seta animacao-seta-e">
                 </div>
                 <div class="slider" id="slider1"></div>
                 <div class="slider" id="slider2"></div>
                 <div class="slider" id="slider3"></div>
                 <div id="next" class="nextSlider" onclick="nextSlider()">
-                    <img src="assets/img/icons/seta-direita.png" alt="pr[oximo" class="seta animacao-seta-d">
+                    <img src="../assets/img/icons/seta-direita.png" alt="pr[oximo" class="seta animacao-seta-d">
                 </div>
             </div>
         </div>
 
         <div class="grid-container" id="products">
-            <!-- PRODUTOS -->
         </div>
     </main>
     <footer>
@@ -94,9 +89,9 @@
                     <li>Telefone: (11) 1234-5678</li>
                 </ul>
                 <div class="social-icons">
-                    <a href="#"><img src="./assets/img/icons/facebook.png"></a>
-                    <a href="#"><img src="./assets/img/icons/twitter.png"></a>
-                    <a href="#"><img src="./assets/img/icons/instagram.png "></a>
+                    <a href="#"><img src="../assets/img/icons/facebook.png"></a>
+                    <a href="#"><img src="../assets/img/icons/twitter.png"></a>
+                    <a href="#"><img src="../assets/img/icons/instagram.png "></a>
                 </div>
             </div>
         </div>
@@ -107,6 +102,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/script.js" defer></script>
+<script type="text/javascript" src="../assets/js/script.js" defer></script>
 
 </html>
