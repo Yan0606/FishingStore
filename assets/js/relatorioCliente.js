@@ -3,7 +3,7 @@ const url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 function carregarProdutos() {
     $.ajax({
         method: "POST",
-        url: url_initial + "products/getall",
+        url: url_initial + "users/getall",
         dataType: "json",
         success: function (response) {
             const produtos = response;
@@ -34,16 +34,3 @@ function carregarProdutos() {
         }
     });
 }
-
-function editarProduto(id) {
-    window.location.href = `editarProduto.html?id=${id}`;
-}
-
-function excluirProduto(id) {
-    if (confirm('Deseja realmente excluir o produto com ID: ' + id + '?')) {
-        alert('Produto com ID ' + id + ' excluído');
-        // futuro código de exclusão    
-    }
-}
-
-window.onload = carregarProdutos;

@@ -13,7 +13,7 @@ function limitarCaracteres(titulo, limite) {
 }
 
 $.ajax({
-    method: "GET",
+    method: "POST",
     url: url_initial + "products/getall",
     dataType: "JSON",
 }).done(async function (response) {
