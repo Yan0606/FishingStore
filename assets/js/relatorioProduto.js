@@ -1,5 +1,6 @@
 const url_initial = "http://localhost/E-commerceAPI-PHPpure/";
 
+// Função para carregar os produtos na tabela
 function carregarProdutos() {
     $.ajax({
         method: "POST",
@@ -41,8 +42,21 @@ function editarProduto(id) {
 
 function excluirProduto(id) {
     if (confirm('Deseja realmente excluir o produto com ID: ' + id + '?')) {
-        alert('Produto com ID ' + id + ' excluído');
-        // futuro código de exclusão    
+        $.ajax({
+            method: "DELETE", 
+            url: url_initial + "products/delete/" + id, 
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+            },
+            success: function (response) {
+                alert('Produto excluído com sucesso!');
+                carregarProdutos(); // Recarregar a lista de produtos após a exclusão
+            },
+            error: function (error) {
+                console.error("Erro ao excluir o produto:", error);
+                alert("Erro ao excluir o produto: " + (error.responseJSON?.message || error.statusText));
+            }
+        });
     }
 }
 

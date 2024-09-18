@@ -61,19 +61,19 @@ function editarProduto() {
         description: descricao,
         value: parseFloat(preco), // Converte o preço para número decimal
         amount: parseInt(quantidade),
-        img_path: img_path, // Inclui img_path no envio
-        created_at: created_at, // Inclui created_at no envio
-        updated_at: updated_at // Inclui updated_at no envio
+        img_path: img_path, 
+        created_at: created_at, 
+        updated_at: updated_at 
     };
 
-    // Exibe os dados enviados para a API para depuração
+
     console.log("Dados enviados para a API:", JSON.stringify(produtoAtualizado));
 
-    // Faz a requisição para atualizar o produto na API
+
     $.ajax({
-        method: "PUT", // Método PUT para atualização
-        url: `http://localhost/E-commerceAPI-PHPpure/products/update/${id}`, // Rota de atualização
-        contentType: "application/json", // Envia os dados como JSON
+        method: "PUT", 
+        url: `http://localhost/E-commerceAPI-PHPpure/products/update/${id}`, 
+        contentType: "application/json", 
         data: JSON.stringify(produtoAtualizado), // Converte o objeto em string JSON
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -89,33 +89,6 @@ function editarProduto() {
     });
 }
 
-// Função para excluir o produto
-function deletarProduto(id) {
-    if (!id) {
-        alert("ID do produto não fornecido.");
-        return;
-    }
-
-    if (confirm("Tem certeza de que deseja excluir este produto?")) {
-        $.ajax({
-            method: "DELETE", // Método DELETE para exclusão
-            url: `http://localhost/E-commerceAPI-PHPpure/products/delete/${id}`, // Endpoint da API para exclusão
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Cabeçalho com o token de autenticação
-            },
-            success: function (response) {
-                console.log("Produto excluído com sucesso:", response);
-                alert("Produto excluído com sucesso!");
-                window.location.href = '/lista-de-produtos'; // Altere para a página de listagem de produtos
-            },
-            error: function (error) {
-                console.error("Erro ao excluir o produto:", error);
-                alert("Erro ao excluir o produto: " + (error.responseJSON?.message || error.statusText));
-            }
-        });
-    }
-}
-
 // Adiciona um listener para o envio do formulário
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
@@ -128,11 +101,5 @@ $(document).ready(function () {
     $('#form-editar-produto').on('submit', function (e) {
         e.preventDefault(); // Previne o comportamento padrão do formulário
         editarProduto(); // Chama a função para editar o produto
-    });
-
-    // Listener para o botão de excluir produto
-    $('#btn-excluir-produto').on('click', function () {
-        const produtoId = $('#produto-id').val();
-        deletarProduto(produtoId); // Chama a função para deletar o produto
     });
 });
