@@ -145,6 +145,46 @@ function buyButtonCLicked() {
     var total = parseFloat(document.querySelector(".total-price").innerText.replace("R$ ", "").replace(",", "."));
 
 
+    function finalizarVenda(id)
+    {
+        let payment = [
+            "Pix",
+            "Débito",
+            "Crédito",
+            "Boleto Bancário",
+            "Cheque"
+        ];
+
+        console.log("funcionou venda")
+        const random_index = Math.floor(Math.random() * payment.length);
+
+        let data = {
+            sales_id: id,
+            payment: payment[random_index]
+        }
+        $.ajax({
+            method: "POST",
+            url: url_initial + "sales/end",
+            data: JSON.stringify(data),
+            dataType: "JSON",
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token')  // Corrigido para Authorization e getItem
+            }
+        })
+        .done((resp) => {
+            console.log(resp.message)
+            if(resp.status == 400)
+            {
+                alert("sem token!")
+            }
+        })
+        .fail((e) => {
+            console.log(e)
+            alert(e.responseJSON.message);
+        })
+    }
+
     // Verifica se o total é 0
     if (total === 0) {
         alert('Seu carrinho está vazio!');
@@ -177,7 +217,7 @@ function buyButtonCLicked() {
                     product_id: id,
                     amount: quantity
                 }
-                $.ajax({
+                await $.ajax({
                     url: url_initial + "salesproducts/insert",
                     method: "POST",
                     data: JSON.stringify(sales_item),
@@ -192,6 +232,8 @@ function buyButtonCLicked() {
                     alert("ERRO = " + err);
                 })
             }
+
+            await finalizarVenda(sales_id);
 
         }).fail(function (error) {
             alert(error.responseJSON.message);
