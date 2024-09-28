@@ -63,3 +63,85 @@ tr:hover {
 .btn-delete:hover {
     background-color: #c82333;
 }
+
+/* DETALHES */
+
+/* Estilo para a tabela de vendas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffffff;
+    color: #203fc7;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para os detalhes dos produtos */
+.detalhes-venda {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.detalhes-produto {
+    background-color: #f9f9f9;
+    border: 1px solid #203fc7;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: calc(50% - 20px); /* Ajustar a largura do cartão */
+    box-sizing: border-box;
+}
+
+.detalhes-produto h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.detalhes-produto p {
+    margin: 5px 0;
+}
+
+.detalhes-produto strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Adiciona um espaçamento entre as seções de informações */
+.detalhes-produto p + p {
+    margin-top: 8px;
+}
+
+button i {
+    font-size: 16px;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #203fc7;
+}
+

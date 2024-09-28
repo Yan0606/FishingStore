@@ -16,19 +16,19 @@ function carregarVendas() {
 
             vendas.forEach(venda => {
                 const row = document.createElement("tr");
-
                 row.innerHTML = `
-                    <td>${venda.id}</td>
-                    <td>${venda.user_id}</td>
-                    <td>${venda.payment}</td>
-                    <td>R$ ${venda.total_price}</td>
-                    <td>
-                        <button class="btn btn-info" onclick="carregarDetalhesVenda(${venda.id})" data-toggle="collapse" data-target="#detalhes-produtos-${venda.id}">
-                            Ver Detalhes
-                        </button>
-                    </td>
-                `;
-
+                <td>${venda.id}</td>
+                <td>${venda.user_id}</td>
+                <td>${venda.payment}</td>
+                <td>R$ ${venda.total_price}</td>
+                <td>
+                    <button class="btn btn-info" onclick="toggleDetalhes(${venda.id})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+            `;
+            
+            
                 tabelaBody.appendChild(row);
 
                 // Adicionar a div para os detalhes dos produtos da venda
@@ -51,9 +51,8 @@ function carregarDetalhesVenda(vendaId) {
         method: "POST",
         url: url_initial + "salesproducts/getall",
         dataType: "json",
-        // Incluindo o sales_id no corpo da requisição
         data: JSON.stringify({ sales_id: vendaId }),
-        contentType: "application/json", // Certifique-se de definir o tipo de conteúdo
+        contentType: "application/json",
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('token')
         },
@@ -71,20 +70,19 @@ function carregarDetalhesVenda(vendaId) {
                 return;
             }
 
-            let detalhesHTML = `<ul>`;
+            let detalhesHTML = `<div class="detalhes-venda">`;
             produtos.forEach(produto => {
                 detalhesHTML += `
-                    <li>
-                        Nome do produto: ${produto.product_name} <br>
-                        Descrição: ${produto.product_description} <br>
-                        Quantidade: ${produto.amount} <br>
-                        Preço unitário: R$ ${produto.product_value.toFixed(2)} <br>
-                        Valor total: R$ ${produto.product_sum_of_values.toFixed(2)} <br>
-                    </li>
-                    <br>
+                    <div class="detalhes-produto">
+                        <h4>Produto: ${produto.product_name}</h4>
+                        <p><strong>Descrição:</strong> ${produto.product_description}</p>
+                        <p><strong>Quantidade:</strong> ${produto.amount}</p>
+                        <p><strong>Preço Unitário:</strong> R$ ${produto.product_value.toFixed(2)}</p>
+                        <p><strong>Valor Total:</strong> R$ ${produto.product_sum_of_values.toFixed(2)}</p>
+                    </div>
                 `;
             });
-            detalhesHTML += `</ul>`;
+            detalhesHTML += `</div>`;
             detalhesDiv.innerHTML = detalhesHTML;
         },
         error: function (error) {
@@ -94,6 +92,16 @@ function carregarDetalhesVenda(vendaId) {
     });
 }
 
+function toggleDetalhes(vendaId) {
+    const detalhesDiv = document.querySelector(`#detalhes-produtos-${vendaId}`);
+    if (detalhesDiv.classList.contains('collapse')) {
+        carregarDetalhesVenda(vendaId);
+        detalhesDiv.classList.remove('collapse');
+    } else {
+        detalhesDiv.classList.add('collapse');
+        detalhesDiv.innerHTML = ""; // Opcional: limpa o conteúdo
+    }
+}
 
 
 // Carregar as vendas ao carregar a página
