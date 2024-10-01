@@ -21,8 +21,8 @@ function carregarUsuarios() {
                     <td>${usuario.email}</td>
                     <td>${usuario.password}</td>
                     <td>
-                        <button class="btn btn-edit" onclick="editarusuario(${usuario.id})">Editar</button>
-                        <button class="btn btn-delete" onclick="excluirusuario(${usuario.id})">Excluir</button>
+                        <button class="btn btn-edit" onclick="editarUsuario(${usuario.id})">Editar</button>
+                        <button class="btn btn-delete" onclick="excluirUsuario(${usuario.id})">Excluir</button>
                     </td>
                 `;
 
@@ -34,6 +34,30 @@ function carregarUsuarios() {
             alert("Erro ao carregar usuarios: " + (error.responseJSON?.message || error.statusText));
         }
     });
+}
+
+function editarUsuario(id) {
+    window.location.href = `editarUsuario.html?id=${id}`;
+}
+
+function excluirUsuario(id) {
+    if (confirm('Deseja realmente excluir o usuario com ID: ' + id + '?')) {
+        $.ajax({
+            method: "DELETE", 
+            url: url_initial + "users/delete/" + id, 
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+            },
+            success: function (response) {
+                alert('Usuário excluído com sucesso!');
+                carregarUsuarios(); // Recarregar a lista de usuários após a exclusão
+            },
+            error: function (error) {
+                console.error("Erro ao excluir o usuário:", error);
+                alert("Erro ao excluir o usuario: " + (error.responseJSON?.message || error.statusText));
+            }
+        });
+    }
 }
 
 window.onload = carregarUsuarios;

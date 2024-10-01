@@ -5,42 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Cliente</title>
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="../assets/css/editarProduto.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <h1>Editar Cliente</h1>
-
-    <!-- Formulário de edição de cliente -->
+    <h1>Editar Usuário</h1>
     <form id="form-editar-cliente">
-        <input type="hidden" id="cliente-id">
-
+        <input type="hidden" id="cliente-id"> <!-- Este é o campo correto para armazenar o ID -->
+    
         <div>
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
         </div>
-
+    
         <div>
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required>
         </div>
-
-        <div>
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" required>
-        </div>
-
-        <!-- Campos ocultos -->
+    
+        <!-- Campos ocultos para created_at e updated_at -->
         <input type="hidden" id="created_at">
         <input type="hidden" id="updated_at">
-
+    
         <button type="submit">Salvar Alterações</button>
     </form>
-
-    <script src="../assets/js/relatorioCliente.js" defer></script>
+    
 
 </body>
+<script src="../assets/js/editarUsuario.js"></script>
+<script src="../assets/js/excluirUsuario.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const clienteId = urlParams.get('id');
+        if (clienteId) {
+            carregarCliente(clienteId); // Aqui estava o erro, agora chamando a função correta
+        }
+    });
+
+</script>
 
 </html>
