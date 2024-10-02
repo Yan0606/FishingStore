@@ -31,7 +31,12 @@ function carregarProdutos() {
             });
         },
         error: function (error) {
-            alert("Erro ao carregar produtos: " + (error.responseJSON?.message || error.statusText));
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Erro ao carregar produtos: ' + (error.responseJSON?.message || error.statusText),
+                icon: 'error',
+                confirmButtonColor: '#d33'
+            });
         }
     });
 }
@@ -41,23 +46,45 @@ function editarProduto(id) {
 }
 
 function excluirProduto(id) {
-    if (confirm('Deseja realmente excluir o produto com ID: ' + id + '?')) {
-        $.ajax({
-            method: "DELETE", 
-            url: url_initial + "products/delete/" + id, 
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
-            },
-            success: function (response) {
-                alert('Produto excluído com sucesso!');
-                carregarProdutos(); // Recarregar a lista de produtos após a exclusão
-            },
-            error: function (error) {
-                console.error("Erro ao excluir o produto:", error);
-                alert("Erro ao excluir o produto: " + (error.responseJSON?.message || error.statusText));
-            }
-        });
-    }
+    // Usar SweetAlert2 para confirmar a exclusão
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: `Deseja realmente excluir o produto com ID: ${id}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, excluir!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Se o usuário confirmar, faz a requisição DELETE
+            $.ajax({
+                method: "DELETE", 
+                url: url_initial + "products/delete/" + id, 
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                success: function (response) {
+                    Swal.fire({
+                        title: 'Excluído!',
+                        text: 'Produto excluído com sucesso!',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6'
+                    });
+                    carregarProdutos(); // Recarregar a lista de produtos após a exclusão
+                },
+                error: function (error) {
+                    Swal.fire({
+                        title: 'Erro!',
+                        text: 'Erro ao excluir o produto: ' + (error.responseJSON?.message || error.statusText),
+                        icon: 'error',
+                        confirmButtonColor: '#d33'
+                    });
+                }
+            });
+        }
+    });
 }
 
 window.onload = carregarProdutos;

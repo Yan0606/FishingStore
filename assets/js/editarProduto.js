@@ -28,15 +28,30 @@ function carregarProduto(id) {
 
                     console.log("Produto encontrado:", produto);
                 } else {
-                    alert("Produto não encontrado.");
+                    Swal.fire({
+                        title: 'Erro!',
+                        text: 'Produto não encontrado.',
+                        icon: 'error',
+                        confirmButtonColor: '#d33'
+                    });
                 }
             } else {
-                alert("Nenhum produto encontrado ou resposta inválida.");
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Nenhum produto encontrado ou resposta inválida.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33'
+                });
             }
         },
         error: function (error) {
             console.error("Erro ao carregar os produtos:", error);
-            alert("Erro ao carregar os produtos: " + (error.responseJSON?.message || error.statusText));
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Erro ao carregar os produtos: ' + (error.responseJSON?.message || error.statusText),
+                icon: 'error',
+                confirmButtonColor: '#d33'
+            });
         }
     });
 }
@@ -61,30 +76,38 @@ function editarProduto() {
         description: descricao,
         value: parseFloat(preco), // Converte o preço para número decimal
         amount: parseInt(quantidade),
-        img_path: img_path, 
-        created_at: created_at, 
-        updated_at: updated_at 
+        img_path: img_path,
+        created_at: created_at,
+        updated_at: updated_at
     };
-
 
     console.log("Dados enviados para a API:", JSON.stringify(produtoAtualizado));
 
-
     $.ajax({
-        method: "PUT", 
-        url: `http://localhost/E-commerceAPI-PHPpure/products/update/${id}`, 
-        contentType: "application/json", 
+        method: "PUT",
+        url: `http://localhost/E-commerceAPI-PHPpure/products/update/${id}`,
+        contentType: "application/json",
         data: JSON.stringify(produtoAtualizado), // Converte o objeto em string JSON
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         success: function (response) {
             console.log("Produto atualizado com sucesso:", response);
-            alert("Produto atualizado com sucesso!");
+            Swal.fire({
+                title: 'Sucesso!',
+                text: 'Produto atualizado com sucesso!',
+                icon: 'success',
+                confirmButtonColor: '#3085d6'
+            });
         },
         error: function (error) {
             console.error("Erro ao atualizar o produto:", error);
-            alert("Erro ao atualizar o produto: " + (error.responseJSON?.message || error.statusText));
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Erro ao atualizar o produto: ' + (error.responseJSON?.message || error.statusText),
+                icon: 'error',
+                confirmButtonColor: '#d33'
+            });
         }
     });
 }
