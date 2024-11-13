@@ -194,6 +194,23 @@ body {
   height: 350px;
 }
 
+.coupon {
+  max-width: 190px;
+  height: 25px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #2d8cf0;
+  border-radius: 15px;
+}
+
+.coupon:focus {
+  color: #2d8cf0;
+  outline-color: #2d8cf0;
+  box-shadow: -3px -3px 15px #2d8cf0;
+  transition: .2s;
+  transition-property: box-shadow;
+}
+
 .car-box {
   display: grid;
   grid-template-columns: 32% 50% 18%;
