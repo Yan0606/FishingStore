@@ -12,6 +12,32 @@ function limitarCaracteres(titulo, limite) {
     }
 }
 
+function aplicarDesconto() {
+    const couponInput = document.querySelector(".coupon");
+    const totalPriceElement = document.querySelector(".total-price");
+
+    // Pega o valor total atual
+    let totalPrice = parseFloat(totalPriceElement.textContent);
+
+    if (couponInput.value.toUpperCase() === "CORINTHANS") {
+        // Calcula o desconto
+        const desconto = (totalPrice * 0.5).toFixed(2);
+        const discountedPrice = (totalPrice - desconto).toFixed(2);
+
+        // Atualiza o texto com o desconto e o novo valor
+        totalPriceElement.textContent = `${discountedPrice} (Desconto: R$ ${desconto})`;
+
+        alert("Cupom aplicado! Você ganhou 50% de desconto!");
+    } else {
+        alert("Cupom inválido.");
+    }
+
+    couponInput.value = "";
+}
+
+// Adiciona o evento de clique ao botão de compra
+document.querySelector(".btn-buy").addEventListener("click", aplicarDesconto);
+
 $.ajax({
     method: "POST",
     url: url_initial + "products/getall",
